@@ -1,36 +1,59 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { markAsDone, markAsPending, remove } from '../actions/todoActions';
 import {
   List,
   ListItem,
   ListItemText,
-  ListItemSecondaryAction
+  ListItemSecondaryAction,
+  IconButton
 } from '@material-ui/core';
-import { Edit, Delete, Check, Replay } from '@material-ui/icons';
-import IconButton from '../template/IconButton';
+import { Delete, Check, Replay } from '@material-ui/icons';
+import If from '../template/If';
 
-const TodoList = ({ tasks, markAsDone, markAsPending, remove }) => {
-  const renderRows = () => {
-    return tasks.map(task => (
-      <ListItem key={task._id} button>
-        <ListItemText
-          primary={task.description}
-          className={task.done ? 'markedAsDone' : ''}
-        />
-        <ListItemSecondaryAction>
-          <IconButton hide={task.done}>
-            <Check onClick={() => markAsDone(task)} />
-          </IconButton>
-          <IconButton hide={!task.done}>
-            <Replay onClick={() => markAsPending(task)} />
-          </IconButton>
-          <IconButton hide={!task.done}>
-            <Delete onClick={() => remove(task)} />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-    ));
-  };
-  return <List component="ul">{renderRows()}</List>;
-};
+class TodoList extends Component {
+  render() {
+    const { tasks, markAsDone, markAsPending, remove } = this.props;
 
-export default TodoList;
+    return (
+      <List component="ul">
+        {tasks.map(task => (
+          <ListItem key={task._id}>
+            <ListItemText
+              primary={task.description}
+              className={task.done ? 'markedAsDone' : ''}
+            />
+            <ListItemSecondaryAction>
+              <If test={!task.done}>
+                <IconButton onClick={() => markAsDone(task)}>
+                  <Check />
+                </IconButton>
+              </If>
+              <If test={task.done}>
+                <IconButton onClick={() => markAsPending(task)}>
+                  <Replay />
+                </IconButton>
+                <IconButton onClick={() => remove(task)}>
+                  <Delete />
+                </IconButton>
+              </If>
+            </ListItemSecondaryAction>
+          </ListItem>
+        ))}
+      </List>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  tasks: state.todo.list
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ markAsDone, markAsPending, remove }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);

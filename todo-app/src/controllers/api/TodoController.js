@@ -3,15 +3,23 @@
 const Todo = require('../../models/Todo');
 
 const index = async (req, res) => {
-  const todos = await Todo.find({}).sort('-createdAt');
+  const { description__regex: regex } = req.query;
+  let todos = [];
+
+  if (regex) {
+    let newRegex = new RegExp(regex);
+    todos = await Todo.find({
+      description: { $regex: newRegex, $options: 'i' }
+    });
+  } else {
+    todos = await Todo.find({}).sort('-createdAt');
+  }
 
   return res.json(todos);
 };
 
 const store = async (req, res) => {
   const todo = await Todo.create(req.body);
-
-  req.io.emit('todo', todo);
 
   return res.json(todo);
 };
@@ -26,11 +34,11 @@ const update = async (req, res) => {
   todo.description = description || todo.description;
 
   // New Done
-  todo.done = done || todo.done;
+  if (done !== undefined) {
+    todo.done = done;
+  }
 
   await todo.save();
-
-  req.io.emit('todo', todo);
 
   return res.json(todo);
 };

@@ -1,17 +1,28 @@
-import { GET_TASKS } from '../actions/types';
+import { DESCRIPTION_CHANGED, TODO_SEARCH, TODO_CLEAR } from '../actions/types';
 
-const initialState = {
-  tasks: []
+const INITIAL_STATE = {
+  description: '',
+  list: []
 };
 
-export default function(state = initialState, action) {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_TASKS:
+    case DESCRIPTION_CHANGED:
       return {
         ...state,
-        tasks: action.payload
+        description: action.payload
+      };
+    case TODO_SEARCH:
+      return {
+        ...state,
+        list: action.payload
+      };
+    case TODO_CLEAR:
+      return {
+        ...state,
+        description: ''
       };
     default:
       return state;
   }
-}
+};

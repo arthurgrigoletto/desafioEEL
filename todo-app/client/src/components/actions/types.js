@@ -1,1 +1,6 @@
-export const GET_TASKS = 'GET_TASKS';
+export const DESCRIPTION_CHANGED = 'DESCRIPTION_CHANGED';
+export const TODO_SEARCH = 'TODO_SEARCH';
+export const TODO_ADD = 'TODO_ADD';
+export const TODO_MARKED_AS_DONE = 'TODO_MARKED_AS_DONE';
+export const TODO_MARKED_AS_PENDING = 'TODO_MARKED_AS_PENDING';
+export const TODO_CLEAR = 'TODO_CLEAR';

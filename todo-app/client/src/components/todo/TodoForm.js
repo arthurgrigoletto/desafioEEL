@@ -1,43 +1,53 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { changeDescription, search, add, clear } from '../actions/todoActions';
 import { TextField } from '@material-ui/core';
 
-import api from '../services/api';
-
 class TodoForm extends Component {
-  state = {
-    newTask: ''
-  };
+  componentDidMount() {
+    this.props.search();
+  }
 
   handleInputChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
-  handleNewTask = async ({ keyCode }) => {
-    if (keyCode !== 13) return;
-
-    const description = this.state.newTask;
-
-    await api.post('/todo', { description });
-
-    this.setState({ newTask: '' });
+  keyHandler = e => {
+    const { add, search, description, clear } = this.props;
+    if (e.key === 'Enter') {
+      e.shiftKey ? search() : add(description);
+    } else if (e.key === 'Escape') {
+      clear();
+    }
   };
 
   render() {
+    const { description, changeDescription } = this.props;
     return (
-      <form>
-        <TextField
-          variant="outlined"
-          label="Adicionar Tarefa"
-          margin="normal"
-          fullWidth
-          name="newTask"
-          value={this.state.newTask}
-          onChange={this.handleInputChange}
-          onKeyDown={this.handleNewTask}
-        />
-      </form>
+      <TextField
+        variant="outlined"
+        label="Adicionar Tarefa"
+        margin="normal"
+        helperText="Press Enter to Add, Shif + Enter to Search, ESC to Clean"
+        fullWidth
+        name="newTask"
+        onKeyUp={this.keyHandler}
+        onChange={changeDescription}
+        value={description}
+      />
     );
   }
 }
 
-export default TodoForm;
+const mapStateToProps = state => ({
+  description: state.todo.description
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ add, changeDescription, search, clear }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoForm);
