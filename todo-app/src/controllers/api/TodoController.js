@@ -7,9 +7,9 @@ const index = async (req, res) => {
   let todos = [];
 
   if (regex) {
-    let newRegex = new RegExp(regex);
+    const newRegex = new RegExp(regex);
     todos = await Todo.find({
-      description: { $regex: newRegex, $options: 'i' }
+      description: { $regex: newRegex, $options: 'i' },
     });
   } else {
     todos = await Todo.find({}).sort('-createdAt');
@@ -55,5 +55,5 @@ module.exports = {
   index,
   store,
   update,
-  remove
+  remove,
 };
