@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { DESCRIPTION_CHANGED, TODO_SEARCH, TODO_CLEAR } from './types';
 
-const URL = 'http://localhost:5000/api/todo';
+const URL = '/api/todo';
 
 export const changeDescription = ({ target: { value } }) => ({
   type: DESCRIPTION_CHANGED,

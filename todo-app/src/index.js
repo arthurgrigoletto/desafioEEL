@@ -1,5 +1,7 @@
 const app = require('./config/custom-express')();
 
-const port = 5000;
+const port = process.env.PORT || process.env.VCAP_APP_PORT || 5000;
 
-app.listen(port);
+app.listen(port, () => {
+  console.log(`Running on port ${port}`);
+});

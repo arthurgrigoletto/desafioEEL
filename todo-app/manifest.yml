@@ -1,0 +1,6 @@
+---
+applications:
+- name: todo-eel
+  memory: 128M
+  instances: 1
+  host: todo-eel

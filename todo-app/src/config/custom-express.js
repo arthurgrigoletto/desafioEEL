@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-const http = require('http');
-const socket = require('socket.io');
+const path = require('path');
 const routes = require('../routes');
 
 module.exports = () => {
@@ -24,18 +23,18 @@ module.exports = () => {
   // Connect to MongoDb
   mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
 
-  // RealTime Middleware
-  const server = http.Server(app);
-  const io = socket(server);
-
-  app.use((req, res, next) => {
-    req.io = io;
-
-    return next();
-  });
-
   // Routes
   app.use('/api', routes);
 
-  return server;
+  // Serve static assets if in production
+  if (process.env.NODE_ENV === 'production') {
+    // Set Static folder
+    app.use(express.static(path.join(__dirname, '../../', 'client', 'build')));
+
+    app.get('/*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../../', 'client', 'build'));
+    });
+  }
+
+  return app;
 };
