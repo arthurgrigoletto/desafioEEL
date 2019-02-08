@@ -17,9 +17,9 @@ export const getCharacters = () => dispatch => {
 export const getCharacter = id => dispatch => {
   dispatch(setCharacterLoading());
   api
-    .get(`/characters/${id}?apikey=${apikey}&hash=${hash}`)
+    .get(`/characters/${id}?ts=${ts}&apikey=${apikey}&hash=${hash}`)
     .then(({ data: { data } }) =>
-      dispatch({ type: GET_CHARACTER, payload: data.results })
+      dispatch({ type: GET_CHARACTER, payload: data.results[0] })
     )
     .catch(() => dispatch({ type: GET_CHARACTER, payload: null }));
 };

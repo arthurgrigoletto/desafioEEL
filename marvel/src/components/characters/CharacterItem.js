@@ -6,12 +6,11 @@ export default ({ character }) => {
   const {
     id,
     name,
-    description,
     thumbnail: { extension, path }
   } = character;
   return (
     <div className="col-sm-4 mb-2">
-      <Link to={{ pathname: `/${id}`, state: { id } }}>
+      <Link to={{ pathname: `/characters/${id}`, state: { id } }}>
         <div class="card card-character bg-dark text-white">
           <img src={`${path}.${extension}`} class="card-img" alt="..." />
           <div class="text-white text-center">

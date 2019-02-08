@@ -1,0 +1,24 @@
+.character {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.character-img {
+  width: 550px;
+}
+
+.character-general-info {
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.buttons-container {
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.button-custom {
+  color: #646363;
+  border: 1px solid #646363;
+  border-radius: 10px;
+}

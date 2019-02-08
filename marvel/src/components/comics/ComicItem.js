@@ -10,7 +10,7 @@ export default ({ comic }) => {
   } = comic;
   return (
     <div className="col-sm-6">
-      <Link to={{ pathname: `/${id}`, state: { id } }}>
+      <Link to={{ pathname: `/comics/${id}`, state: { id } }}>
         <div className="card card-comic offscreen">
           <img
             className="card-img-top-comic"
