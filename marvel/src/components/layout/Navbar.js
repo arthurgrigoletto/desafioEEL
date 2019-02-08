@@ -15,12 +15,12 @@ export default props => (
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon" />
+      <span className="navbar-toggler-icon" />
     </button>
 
     <div className="collapse navbar-collapse" id="basicExampleNav">
       <ul className="navbar-nav mr-auto">
-        <li className="nav-item active">
+        <li className="nav-item">
           <Link className="nav-link" to="/">
             Characters
             <span className="sr-only">(current)</span>
@@ -29,11 +29,6 @@ export default props => (
         <li className="nav-item">
           <Link className="nav-link" to="/comics">
             Comics
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/creators">
-            Creators
           </Link>
         </li>
       </ul>

@@ -5,7 +5,7 @@ import configureStore from './store';
 import Navbar from './layout/Navbar';
 import Characters from './characters/Characters';
 import Comics from './comics/Comics';
-import Creators from './creators/Creators';
+import PageDetail from './common/PageDetail';
 
 const store = configureStore();
 
@@ -19,7 +19,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Characters} />
               <Route path="/comics" component={Comics} />
-              <Route path="/creators" component={Creators} />
+              <Route path="/:id" component={PageDetail} />
             </Switch>
           </div>
         </Router>
