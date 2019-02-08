@@ -11,11 +11,11 @@ export default ({ character }) => {
   return (
     <div className="col-sm-4 mb-2">
       <Link to={{ pathname: `/characters/${id}`, state: { id } }}>
-        <div class="card card-character bg-dark text-white">
+        <div className="card card-character bg-dark text-white">
           <img src={`${path}.${extension}`} class="card-img" alt="..." />
-          <div class="text-white text-center">
-            <div class="card-img-overlay">
-              <h3 class="card-title pt-2">
+          <div className="text-white text-center">
+            <div className="card-img-overlay">
+              <h3 className="card-title pt-2">
                 <strong>{name}</strong>
               </h3>
             </div>
