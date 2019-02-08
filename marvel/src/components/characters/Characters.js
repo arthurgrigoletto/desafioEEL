@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../common/Spinner';
 import { getCharacters } from '../actions/characterActions';
-import Card from '../common/Card';
+import './Characters.css';
+import CharactersFeed from './CharactersFeed';
 
 class Characters extends Component {
   componentDidMount() {
@@ -18,16 +19,18 @@ class Characters extends Component {
       characterItems = <Spinner />;
     } else {
       if (characters.length > 0) {
-        characterItems = characters.map(character => (
-          <Card key={character.id} entity={character} />
-        ));
+        characterItems = (
+          <div className="card-deck">
+            <CharactersFeed characters={characters} />
+          </div>
+        );
       } else {
         characterItems = <h4>No Characters found...</h4>;
       }
     }
     return (
       <div className="characters">
-        <div className="card-deck">{characterItems}</div>
+        <div className="container">{characterItems}</div>
       </div>
     );
   }

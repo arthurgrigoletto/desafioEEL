@@ -5,7 +5,7 @@ import { GET_COMICS, COMIC_LOADING, GET_COMIC } from './types';
 export const getComics = () => dispatch => {
   dispatch(setComicLoading());
   api
-    .get(`/comics?ts=${ts}&apikey=${apikey}&hash=${hash}&noVariants=true&hasDigitalIssue=true`)
+    .get(`/comics?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=51&noVariants=true&hasDigitalIssue=true`)
     .then(({ data: { data } }) =>
       dispatch({ type: GET_COMICS, payload: data.results })
     )

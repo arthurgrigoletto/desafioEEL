@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../common/Spinner';
 import { getComics } from '../actions/comicActions';
-import Card from '../common/Card';
+import ComicFeed from './ComicsFeed';
+import './Comics.css';
 
 class Comics extends Component {
   componentDidMount() {
@@ -17,16 +18,18 @@ class Comics extends Component {
       comicItems = <Spinner />;
     } else {
       if (comics.length > 0) {
-        comicItems = comics.map(comic => (
-          <Card key={comic.id} entity={comic} />
-        ));
+        comicItems = (
+          <div className="card-deck">
+            <ComicFeed comics={comics} />
+          </div>
+        );
       } else {
         comicItems = <h4>No Comics found...</h4>;
       }
     }
     return (
-      <div className="characters">
-        <div className="card-deck">{comicItems}</div>
+      <div className="comics">
+        <div className="container">{comicItems}</div>
       </div>
     );
   }

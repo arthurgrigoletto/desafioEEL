@@ -6,7 +6,7 @@ export const getCharacters = () => dispatch => {
   dispatch(setCharacterLoading());
 
   api
-    .get(`/characters?ts=${ts}&apikey=${apikey}&hash=${hash}`)
+    .get(`/characters?ts=${ts}&apikey=${apikey}&hash=${hash}&limit=51`)
     .then(({ data: { data } }) =>
       dispatch({ type: GET_CHARACTERS, payload: data.results })
     )

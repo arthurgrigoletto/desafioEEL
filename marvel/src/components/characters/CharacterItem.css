@@ -1,0 +1,18 @@
+.card-character {
+  height: 20rem;
+  margin-top: 20%;
+}
+
+.card-img {
+  border-top-right-radius: calc(0.25rem - 1px);
+  border-top-left-radius: calc(0.25rem - 1px);
+  height: 20rem;
+  margin: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-img-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 40%;
+}
