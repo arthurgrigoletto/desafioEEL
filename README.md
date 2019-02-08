@@ -52,4 +52,4 @@ Cada projeto tem sua próprio jeito de instalar rodar, leia cada um deles aqui:
 
 ## License
 
-Esse projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
+Esse projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE.md](https://github.com/arthurgrigoletto/desafioEEL/blob/master/todo-app/LICENSE.md) para mais detalhes.
