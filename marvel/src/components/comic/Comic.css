@@ -1,0 +1,13 @@
+.comic {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.comic-img {
+  width: 550px;
+}
+
+.comic-general-info {
+  flex-wrap: wrap;
+  flex-direction: row;
+}

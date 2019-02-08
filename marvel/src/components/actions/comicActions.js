@@ -18,7 +18,7 @@ export const getComic = id => dispatch => {
   api
     .get(`/comics/${id}?ts=${ts}&apikey=${apikey}&hash=${hash}`)
     .then(({ data: { data } }) =>
-      dispatch({ type: GET_COMIC, payload: data.results })
+      dispatch({ type: GET_COMIC, payload: data.results[0] })
     )
     .catch(() => dispatch({ type: GET_COMIC, payload: null }));
 };
