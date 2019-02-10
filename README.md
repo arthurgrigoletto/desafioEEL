@@ -41,8 +41,6 @@ Cada projeto tem sua próprio jeito de instalar rodar, leia cada um deles aqui:
 - [Node.js](https://nodejs.org/en/) - Usado como runtime
 - [Yarn](https://yarnpkg.com/pt-BR/) - Usado como gerenciador de pacotes, como o npm(instalado por padrão pelo node.js)
 - [Express](https://expressjs.com/pt-br/) - Usado como web Framework
-- [Passport](http://www.passportjs.org/) - Usado para autentificação de usuários
-- [Passport-jwt](https://github.com/themikenicholson/passport-jwt) - Usado para autentificação de usuários através de JWT Token
 - [ESLint](https://eslint.org/) - Usado para controle de escrita de código
 - [Mocha](https://mochajs.org/) - Usado para testes
 - [Chai](https://www.chaijs.com/) - Usado para testes
