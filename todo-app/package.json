@@ -8,7 +8,7 @@
     "server": "nodemon src/index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "lint": "./node_modules/.bin/eslint src/**",
+    "lint": "./node_modules/.bin/eslint \"src/**/*.js\"",
     "prepush": "npm run lint",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js",
     "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --watch",
